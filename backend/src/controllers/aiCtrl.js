@@ -15,7 +15,7 @@ export const transcribeAndRespond = async (req, res) => {
     const filePath = req.file.path;
     const form = new FormData();
     form.append("file", fs.createReadStream(filePath));
-    form.append("model", "whisper-1"); // update if OpenAI changes model name
+    form.append("model", "whisper-1");
 
     const whisperResp = await axios.post(
       "https://api.openai.com/v1/audio/transcriptions",
