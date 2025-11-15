@@ -31,11 +31,10 @@ export const transcribeAndRespond = async (req, res) => {
     const transcript =
       whisperResp.data.text || whisperResp.data.transcript || "";
 
-    // 2) Send transcript to OpenAI ChatCompletion to get assistant reply
     const chatResp = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-4o-mini", // choose appropriate model or gpt-4o, gpt-4 etc.
+        model: "gpt-4o-mini",
         messages: [
           { role: "system", content: "You are a helpful voice assistant." },
           { role: "user", content: transcript },
