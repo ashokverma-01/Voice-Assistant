@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import VoiceRecorder from "./components/VoiceRecorder.jsx";
-import Chat from "./components/Chat.jsx";
+import VoiceRecorder from "./components/VoiceRecorder";
+import Chat from "./components/Chat";
 
 export default function App() {
   const [messages, setMessages] = useState([
