@@ -12,7 +12,6 @@ export const transcribeAndRespond = async (req, res) => {
     if (!req.file)
       return res.status(400).json({ message: "No audio uploaded" });
 
-    // 1) Send audio file to Whisper (OpenAI) for transcription
     const filePath = req.file.path;
     const form = new FormData();
     form.append("file", fs.createReadStream(filePath));
@@ -65,11 +64,9 @@ export const transcribeAndRespond = async (req, res) => {
     });
   } catch (err) {
     console.error("transcribe error:", err.response?.data || err.message);
-    res
-      .status(500)
-      .json({
-        message: "Transcription error",
-        error: err.response?.data || err.message,
-      });
+    res.status(500).json({
+      message: "Transcription error",
+      error: err.response?.data || err.message,
+    });
   }
 };
